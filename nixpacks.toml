@@ -3,9 +3,9 @@ runtime = "nodejs"
 
 [env]
 PORT = "3000"
-KLAVIYO_API_KEY = "your-klaviyo-api-key"
-KLAVIYO_COVERED_LIST = "your-covered-list-id"
-KLAVIYO_NOT_COVERED_LIST = "your-not-covered-list-id"
+KLAVIYO_API_KEY = "pk_a4c897e1716dae826c47517a20f80beebf"
+KLAVIYO_COVERED_LIST = "W59Gm7"
+KLAVIYO_NOT_COVERED_LIST = "UQBibj"
 
 [dependencies]
-nodejs = "14.17.0"
+nodejs = "20.10.0"
