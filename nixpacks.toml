@@ -1,0 +1,11 @@
+[nixpacks]
+runtime = "nodejs"
+
+[env]
+PORT = "3000"
+KLAVIYO_API_KEY = "your-klaviyo-api-key"
+KLAVIYO_COVERED_LIST = "your-covered-list-id"
+KLAVIYO_NOT_COVERED_LIST = "your-not-covered-list-id"
+
+[dependencies]
+nodejs = "14.17.0"
