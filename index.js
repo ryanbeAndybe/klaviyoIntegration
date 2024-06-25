@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -32,9 +32,7 @@ app.post("/notificationPopup", async (req, res) => {
 	let list = process.env.KLAVIYO_NOT_COVERED_LIST;
 	if (requestData.segment === "covered")
 		list = process.env.KLAVIYO_COVERED_LIST;
-	else if (requestData.segment === "not-covered") {
-		list = "UQBibj";
-	} else {
+	else if (requestData.segment !== "not-covered") {
 		return res.status(400).json({ error: "Invalid segment" });
 	}
 
