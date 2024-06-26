@@ -31,7 +31,7 @@ const validateRequestData = (data, requiredKeys) => {
 
 // Proxy endpoint for Klaviyo API profiles
 app.post("/notificationPopup", async (req, res) => {
-	const requiredKeys = ["firstname", "email", "zipcode", "birthday", "segment"];
+	const requiredKeys = ["firstname", "email", "segment"];
 	const requestData = req.body;
 
 	if (!validateRequestData(requestData, requiredKeys)) {
@@ -63,16 +63,14 @@ app.post("/notificationPopup", async (req, res) => {
 			attributes: {
 				email: requestData.email,
 				first_name: requestData.firstname,
-				location: {
-					zip: requestData.zipcode,
-				},
-				properties: {
-					zipcode: requestData.zipcode,
-					birthday: requestData.birthday,
-				},
 			},
 		},
 	};
+
+	if (requestData.location)
+		profileData.data.attributes.location = requestData.location;
+	if (requestData.properties)
+		profileData.data.attributes.properties = requestData.properties;
 
 	try {
 		const profileResponse = await fetch(profile_url, {
